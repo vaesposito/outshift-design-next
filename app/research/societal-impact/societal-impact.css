@@ -1,0 +1,242 @@
+/* ── Page Hero ── */
+.page-hero {
+    position: relative;
+    z-index: 1;
+    padding: 24px 0 64px;
+}
+.page-hero .breadcrumb {
+    font-size: 0.85em;
+    color: var(--color-text-subtle);
+    margin-bottom: 32px;
+}
+.page-hero .breadcrumb a { color: var(--color-accent); }
+.page-hero .breadcrumb span { margin: 0 8px; color: var(--color-border-medium); }
+.page-hero-title {
+    text-align: center;
+    margin-bottom: 32px;
+}
+.page-hero-title h1 {
+    font-size: clamp(2em, 3.5vw, 10em);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.15;
+}
+.page-hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+.page-hero-text {
+    flex: 5;
+    padding-right: 40px;
+}
+.page-hero-text p {
+    font-size: 18px;
+    font-weight: 300;
+    color: #363E4A;
+    line-height: 1.7;
+    margin: 0;
+}
+[data-theme="dark"] .page-hero-text p { color: var(--color-text-muted); }
+.page-hero-image {
+    flex: 7;
+    border-radius: 16px;
+    overflow: hidden;
+}
+.page-hero-image img {
+    width: 100%;
+    height: 380px;
+    border-radius: 16px;
+    object-fit: cover;
+    display: block;
+}
+.page-hero-text ul {
+    padding-left: 20px;
+    margin: 16px 0 0;
+    line-height: 1.8;
+    font-size: 18px;
+    font-weight: 300;
+    color: #363E4A;
+}
+[data-theme="dark"] .page-hero-text ul { color: var(--color-text-muted); }
+
+/* ── Framework Section ── */
+.framework-section {
+    position: relative;
+    z-index: 1;
+    padding: 80px 0;
+    border: 1px solid rgba(77, 99, 128, 0.21);
+    border-bottom: none;
+    background: linear-gradient(132deg, rgba(210, 194, 255, 0.15) 26.47%, rgba(255, 255, 255, 0.00) 88.42%);
+    box-shadow: 0 6.593px 10.548px 0 rgba(0, 0, 0, 0.00), 0 15.823px 52.742px 0 rgba(0, 0, 0, 0.00), 0 34.282px 105.484px 0 rgba(0, 0, 0, 0.00);
+    backdrop-filter: blur(32.96px);
+    -webkit-backdrop-filter: blur(32.96px);
+}
+.framework-section-header {
+    margin-bottom: 48px;
+    text-align: center;
+}
+.framework-section-header h2 {
+    font-size: clamp(2em, 3.5vw, 10em);
+    font-weight: 200;
+    margin: 0 0 16px;
+}
+.framework-section-header p {
+    font-size: 1.05em;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    line-height: 1.7;
+    margin: 0 auto;
+}
+
+/* ── Framework recap (jump links to subsections) ── */
+.framework-recap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 0 0 64px;
+}
+.framework-recap-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    position: relative;
+}
+.framework-recap-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+    background: var(--color-hover);
+}
+.framework-recap-num {
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    font-feature-settings: 'tnum';
+}
+.framework-recap-label {
+    font-size: 0.78em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-subtle);
+}
+.framework-recap-title {
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+    color: var(--color-text);
+}
+
+.responsible-step-template a {
+    color: var(--color-accent);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.responsible-step-template a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+}
+.responsible-step[id] {
+    scroll-margin-top: 96px;
+}
+
+/* ── Responsible Agent Steps ── */
+.responsible-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.responsible-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 48px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+.responsible-step:first-child {
+    padding-top: 0;
+}
+.responsible-step:last-child {
+    border-bottom: none;
+}
+.responsible-step-image {
+    flex-shrink: 0;
+    width: 160px;
+}
+.responsible-step-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.responsible-step-content {
+    flex: 1;
+}
+.responsible-step-label {
+    font-size: 0.82em;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    margin: 0 0 6px;
+}
+.responsible-step-content h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0 0 12px;
+    line-height: 1.3;
+}
+.responsible-step-content ul {
+    padding-left: 20px;
+    margin: 0 0 16px;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    font-size: 0.95em;
+}
+.responsible-step-content ul li {
+    margin-bottom: 2px;
+}
+.responsible-step-template {
+    font-size: 0.88em;
+    color: var(--color-text-muted);
+}
+.responsible-step-template strong {
+    display: block;
+    color: var(--color-text);
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .page-hero-title h1 { font-size: clamp(2em, 3.5vw, 10em); }
+    .page-hero-image img { height: 340px; }
+    .framework-section-header h2 { font-size: clamp(2em, 3.5vw, 10em); }
+    .responsible-step-image { width: 140px; }
+    .framework-recap { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .page-hero-inner { flex-direction: column; gap: 32px; }
+    .page-hero-text { padding-right: 0; }
+    .page-hero-title h1 { font-size: clamp(2em, 3.5vw, 10em); }
+    .page-hero-image img { height: 280px; max-width: 100%; }
+    .framework-section-header h2 { font-size: 1.8em; }
+    .responsible-step { flex-direction: column; gap: 24px; }
+    .responsible-step-image { width: 120px; }
+    .framework-recap { grid-template-columns: 1fr; gap: 12px; margin-bottom: 40px; }
+}
+
+@media (max-width: 480px) {
+    .page-hero-title h1 { font-size: 1.6em; }
+    .page-hero-image img { height: 220px; }
+    .framework-section-header h2 { font-size: 1.5em; }
+    .responsible-step-content h3 { font-size: 1.2em; }
+    .responsible-step-image { width: 100px; }
+}
