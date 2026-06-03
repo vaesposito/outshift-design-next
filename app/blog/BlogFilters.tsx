@@ -99,7 +99,11 @@ const CalendarIcon = () => (
   </svg>
 )
 
+const MAX_VISIBLE_TAGS = 2
+
 function CardInner({ card }: { card: BlogCard }) {
+  const visibleTags = card.tagLabels.slice(0, MAX_VISIBLE_TAGS)
+  const hiddenTags = card.tagLabels.slice(MAX_VISIBLE_TAGS)
   return (
     <>
       <div className="blog-card-cover">
@@ -116,9 +120,22 @@ function CardInner({ card }: { card: BlogCard }) {
       </div>
       <div className="blog-card-body">
         <div className="blog-card-tags">
-          {card.tagLabels.map((label) => (
+          {visibleTags.map((label) => (
             <span className="blog-card-tag" key={label}>{label}</span>
           ))}
+          {hiddenTags.length > 0 && (
+            <span
+              className="blog-card-tag blog-card-tag--more"
+              tabIndex={0}
+              title={hiddenTags.join(', ')}
+              aria-label={`${hiddenTags.length} more tags: ${hiddenTags.join(', ')}`}
+            >
+              +{hiddenTags.length}
+              <span className="blog-card-tag-tooltip" role="tooltip">
+                {hiddenTags.join(', ')}
+              </span>
+            </span>
+          )}
         </div>
         <h3>{card.title}</h3>
         <p className="blog-card-desc">{card.desc}</p>

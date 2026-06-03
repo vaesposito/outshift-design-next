@@ -150,7 +150,7 @@ a.blog-card-item {
 .blog-card-tags {
     display: flex;
     gap: 10px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin-bottom: 16px;
 }
 .blog-card-tag {
@@ -168,6 +168,49 @@ a.blog-card-item {
     font-size: 0.78em;
     font-weight: 500;
     color: var(--color-text);
+    white-space: nowrap;
+}
+/* "+N" overflow chip with CSS tooltip listing hidden tags */
+.blog-card-tag--more {
+    position: relative;
+    cursor: default;
+    color: var(--color-text-subtle);
+}
+.blog-card-tag-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    white-space: nowrap;
+    padding: 7px 11px;
+    border-radius: 8px;
+    background: var(--color-text);
+    color: var(--color-bg);
+    font-size: 0.95em;
+    font-weight: 500;
+    line-height: 1;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    box-shadow: 0 6px 20px var(--color-shadow);
+    z-index: 50;
+}
+.blog-card-tag-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--color-text);
+}
+.blog-card-tag--more:hover .blog-card-tag-tooltip,
+.blog-card-tag--more:focus .blog-card-tag-tooltip,
+.blog-card-tag--more:focus-visible .blog-card-tag-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
 }
 .blog-card-body {
     padding: 24px;
