@@ -22,7 +22,7 @@
     margin-bottom: 32px;
 }
 .research-hero-title h1 {
-    font-size: 2em;
+    font-size: clamp(2em, 3.5vw, 10em);
     font-weight: 600;
     margin: 0;
     line-height: 1.15;
@@ -162,7 +162,7 @@
 
 /* ── Responsive: Tablet ── */
 @media (max-width: 1024px) {
-    .research-hero-title h1 { font-size: 2em; }
+    .research-hero-title h1 { font-size: clamp(2em, 3.5vw, 10em); }
     .research-hero-image img { height: 340px; }
     .research-section-header h2 { font-size: 2.2em; }
     .research-card { width: 70%; padding: 28px; }
@@ -177,7 +177,7 @@
         gap: 32px;
     }
     .research-hero-text { padding-right: 0; }
-    .research-hero-title h1 { font-size: 2em; }
+    .research-hero-title h1 { font-size: clamp(2em, 3.5vw, 10em); }
     .research-hero-image img { height: 280px; max-width: 100%; }
 
     .research-section-header h2 { font-size: 1.8em; }
