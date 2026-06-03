@@ -701,6 +701,13 @@ nav > ul > li { position: relative; }
   gap: 24px;
   margin-bottom: 48px;
 }
+/* Homepage "Latest from Our Blog": 3 cards, full container width */
+.blog-section .blog-cards {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 900px) {
+  .blog-section .blog-cards { grid-template-columns: 1fr; }
+}
 .blog-card {
   display: flex;
   flex-direction: column;

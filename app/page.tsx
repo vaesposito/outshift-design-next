@@ -138,35 +138,7 @@ export default function HomePage() {
           </div>
           <div className="blog-cards">
             <a
-              href="https://outshift-headless-cms-s3.s3.us-east-2.amazonaws.com/Navigating_The_Multi-Agent_Future.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="blog-card"
-            >
-              <div>
-                <h4>Navigating the Multi-Agent Future</h4>
-                <p className="blog-desc">Expert perspectives on human–agent interaction. Key findings and actionable insights from leading industry and academic voices on the future of work with AI agents.</p>
-              </div>
-              <div>
-                <div className="blog-meta">
-                  <span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    Krystelle Gonzalez Papaux
-                  </span>
-                  <span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                    April 2026
-                  </span>
-                </div>
-                <div className="blog-footer">
-                  <span>Whitepaper</span>
-                  <span className="read-more">Read more</span>
-                </div>
-              </div>
-            </a>
-
-            <a
-              href="/files/ai-ethics-and-design.pdf"
+              href={asset('/files/ai-ethics-and-design.pdf')}
               target="_blank"
               rel="noopener noreferrer"
               className="blog-card"
