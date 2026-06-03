@@ -73,7 +73,7 @@ const CARDS: BlogCard[] = [
   {
     href: '/blog/augmented-designer',
     external: false,
-    image: asset('/images/blog/augmented-designer/hero.svg'),
+    image: asset('/images/blog/augmented-designer/hero.png'),
     imageAlt: 'The Augmented Designer',
     tags: ['design', 'ai', 'workflow', 'case-study', 'agents'],
     tagLabels: ['Design', 'AI', 'Workflow', 'Case Study', 'Agents'],

@@ -16,14 +16,14 @@ export const metadata: Metadata = {
       'Reflections on AI-augmented design: plausible noise, the engineer pal effect, and a case study of the CASA project at Outshift.',
     url: 'https://vaesposito.github.io/outshift-design/augmented-designer.html',
     siteName: 'Outshift Design',
-    images: [{ url: 'https://vaesposito.github.io/outshift-design/images/blog/augmented-designer/hero.svg' }],
+    images: [{ url: 'https://vaesposito.github.io/outshift-design/images/blog/augmented-designer/hero.png' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'The Augmented Designer: How Agents are Reshaping the Design Workflow — Outshift Design',
     description:
       'Reflections on AI-augmented design: plausible noise, the engineer pal effect, and a case study of the CASA project at Outshift.',
-    images: ['https://vaesposito.github.io/outshift-design/images/blog/augmented-designer/hero.svg'],
+    images: ['https://vaesposito.github.io/outshift-design/images/blog/augmented-designer/hero.png'],
   },
 }
 
@@ -37,7 +37,7 @@ const jsonLd = {
   publisher: { '@type': 'Organization', name: 'Outshift Design' },
   datePublished: '2026-06-01',
   url: 'https://vaesposito.github.io/outshift-design/blog/augmented-designer',
-  image: 'https://vaesposito.github.io/outshift-design/images/blog/augmented-designer/hero.svg',
+  image: 'https://vaesposito.github.io/outshift-design/images/blog/augmented-designer/hero.png',
   keywords: ['AI design', 'augmented design', 'design workflow', 'coding assistants', 'CASA', 'Outshift', 'human-in-the-loop'],
 }
 
@@ -75,7 +75,7 @@ export default function AugmentedDesignerPage() {
 
           <div className="article-hero">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={asset('/images/blog/augmented-designer/hero.svg')} alt="The Augmented Designer" />
+            <img src={asset('/images/blog/augmented-designer/hero.png')} alt="The Augmented Designer" />
           </div>
 
           <div className="author-row">
