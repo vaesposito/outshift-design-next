@@ -91,7 +91,7 @@ export default function GuidingPrinciplesPage() {
             <div className="sdk-text">
               <h2>Build with the Hax SDK</h2>
               <p>The HAX SDK gives developers everything they need to integrate agents into their apps, without losing clarity, structure, or control. Use structured schemas, prebuilt components, and clear boundaries to keep agent behavior collaborative and predictable.</p>
-              <Link href="/sdk#introduction" className="sdk-cta">
+              <Link href="/sdk#introduction" target="_blank" rel="noopener noreferrer" className="sdk-cta">
                 Explore the SDK
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
               </Link>

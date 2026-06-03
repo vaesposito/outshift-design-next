@@ -60,6 +60,8 @@ export default function HomePage() {
               <Link href="/hax" className="text-link-cta">Learn about HAX</Link>
               <Link
                 href="/sdk#introduction"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="arrow-link arrow-link--labeled"
                 aria-label="Explore the SDK documentation"
               >
