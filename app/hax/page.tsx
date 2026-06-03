@@ -55,17 +55,12 @@ export default function HaxPage() {
                 collaborative.
               </p>
               <div style={{ marginTop: 28 }}>
-                <a
-                  href="https://vaesposito.github.io/outshift-design/sdk.html#introduction"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hero-arrow-link"
-                >
+                <Link href="/sdk#introduction" className="hero-arrow-link">
                   <span>Explore the SDK</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M7 17L17 7M17 7H7M17 7V17" />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="page-hero-image">
@@ -95,17 +90,12 @@ export default function HaxPage() {
                 prebuilt components, and clear boundaries to keep agent behavior collaborative and
                 predictable.
               </p>
-              <a
-                href="https://vaesposito.github.io/outshift-design/sdk.html#introduction"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="sdk-cta"
-              >
+              <Link href="/sdk#introduction" className="sdk-cta">
                 Explore the SDK
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
-              </a>
+              </Link>
             </div>
             <div className="sdk-image">
               {/* eslint-disable-next-line @next/next/no-img-element */}
