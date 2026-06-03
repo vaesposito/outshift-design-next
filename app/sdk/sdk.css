@@ -87,6 +87,70 @@
     margin: 0 0 32px;
 }
 
+/* ── Doc content (component / guide sub-pages) ── */
+.sdk-doc h1 {
+    font-size: 2.4em;
+}
+.sdk-doc h2 {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 40px 0 16px;
+}
+.sdk-main h3 {
+    font-size: 1.2em;
+    font-weight: 500;
+    margin: 32px 0 12px;
+}
+.sdk-main li {
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin: 0 0 16px;
+    max-width: 720px;
+}
+.sdk-main > ul {
+    padding-left: 24px;
+}
+.sdk-main pre {
+    background: var(--color-hover);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    margin: 0 0 24px;
+    max-width: 720px;
+}
+.sdk-main code {
+    font-family: 'SF Mono', Monaco, Consolas, monospace;
+    font-size: 0.9em;
+}
+.sdk-main p code,
+.sdk-main li code {
+    background: var(--color-hover);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.preview-image {
+    margin: 24px 0 32px;
+    max-width: 720px;
+}
+.preview-image img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 24px var(--color-shadow);
+}
+.coming-soon {
+    display: inline-block;
+    background: var(--color-hover);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 0.95em;
+    color: var(--color-text-muted);
+    margin: 24px 0;
+}
+
 /* ── Component Cards ── */
 .components-grid {
     display: grid;
