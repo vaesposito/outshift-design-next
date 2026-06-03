@@ -2,6 +2,12 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
+  // Disable Tailwind's built-in `.container` utility so it doesn't collide
+  // with the site's own `.container` class (Tailwind's caps max-width to the
+  // breakpoint and isn't auto-centered, which left-shifts the layout).
+  corePlugins: {
+    container: false,
+  },
   theme: {
     extend: {
       colors: {
