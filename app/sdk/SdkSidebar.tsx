@@ -44,13 +44,6 @@ const SECTIONS: NavSection[] = [
       { label: 'Rules Context', href: '/sdk/rules-context' },
     ],
   },
-  {
-    title: 'Resources',
-    items: [
-      { label: 'Style Guide', href: '/styleguide' },
-      { label: 'Strapi Components', href: '/components' },
-    ],
-  },
 ]
 
 export default function SdkSidebar() {
