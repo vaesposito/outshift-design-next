@@ -176,7 +176,7 @@ button, .cta-button {
   text-decoration: none;
   font-family: inherit;
 }
-button::before, .cta-button::before {
+.cta-button::before {
   content: '';
   position: absolute;
   inset: 0;
