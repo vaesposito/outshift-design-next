@@ -131,6 +131,4 @@
   <text x="600" y="370" text-anchor="middle" fill="#9ca3b0" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500">AI Agent</text>
   <text x="1040" y="356" text-anchor="middle" fill="#9ca3b0" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500">Output</text>
 
-  <!-- Rainbow accent line at bottom -->
-  <rect x="480" y="565" width="240" height="3" rx="1.5" fill="url(#accentGrad)"/>
 </svg>
