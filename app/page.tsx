@@ -58,10 +58,8 @@ export default function HomePage() {
             <p>Designing for the Internet of Agents</p>
             <div className="card-text-actions">
               <Link href="/hax" className="text-link-cta">Learn about HAX</Link>
-              <a
+              <Link
                 href="/sdk#introduction"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="arrow-link arrow-link--labeled"
                 aria-label="Explore the SDK documentation"
               >
@@ -69,7 +67,7 @@ export default function HomePage() {
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M4 12L12 4M12 4H5M12 4V11"/>
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="card-image">
