@@ -116,7 +116,7 @@ a:link, a:visited, a:hover, a:active {
 /* ── Container utility ── */
 .container {
   width: 100%;
-  padding: 0 min(10%, max(10%, calc((100% - 1400px) / 2)));
+  padding: 0 max(10%, calc((100% - 1400px) / 2));
   box-sizing: border-box;
 }
 
@@ -450,7 +450,7 @@ nav > ul > li { position: relative; }
   display: flex;
   align-items: center;
   gap: 60px;
-  padding: 90px min(11%, max(10%, calc((100% - 1400px) / 2)));
+  padding: 90px max(10%, calc((100% - 1400px) / 2));
   position: relative;
   overflow: hidden;
   background-image: var(--bg-section);
