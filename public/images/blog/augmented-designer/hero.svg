@@ -78,9 +78,8 @@
     <line x1="345" y1="390" x2="206" y2="320" marker-end="url(#arrowhead)"/>
   </g>
 
-  <!-- Solid lines (primary spine: designer -> agent -> output) -->
+  <!-- Solid lines (primary spine: agent -> output) -->
   <g opacity="0.6" stroke="url(#accentGrad)" stroke-width="2">
-    <line x1="195" y1="300" x2="548" y2="300" marker-end="url(#arrowhead)"/>
     <line x1="600" y1="300" x2="994" y2="300" marker-end="url(#arrowhead)"/>
   </g>
 
