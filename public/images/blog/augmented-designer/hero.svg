@@ -72,8 +72,8 @@
     <line x1="600" y1="300" x2="770" y2="215" marker-end="url(#arrowhead)"/>
     <!-- iteration -> output: dashed body (no marker) + short SOLID lead-in carrying the arrowhead,
          so the arrowhead always sits on solid stroke (robust; no fragile dash-phase gap) -->
-    <line x1="810" y1="215" x2="996" y2="285"/>
-    <line x1="980" y1="279" x2="996" y2="285" stroke-dasharray="none" marker-end="url(#arrowhead)"/>
+    <line x1="810" y1="215" x2="958" y2="271"/>
+    <line x1="955" y1="270" x2="996" y2="285" stroke-dasharray="none" marker-end="url(#arrowhead)"/>
     <!-- output -> refinement (starts on Output node edge facing Refine) -->
     <line x1="996" y1="315" x2="810" y2="385" marker-end="url(#arrowhead)"/>
     <!-- refinement -> ai agent (reversed; ends at agent edge) -->
