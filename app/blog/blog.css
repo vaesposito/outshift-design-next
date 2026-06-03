@@ -126,6 +126,7 @@ a.blog-card-item {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .blog-card-item:hover {
@@ -180,11 +181,14 @@ a.blog-card-item {
     margin: 0 0 12px;
     line-height: 1.4;
     color: var(--color-text);
+    text-align: left;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    min-height: calc(1.1em * 1.4 * 2);
 }
+.blog-card-body .blog-card-desc { text-align: left; }
 .blog-card-body .blog-card-desc {
     font-size: 0.85em;
     color: var(--color-text-muted);
