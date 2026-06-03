@@ -1230,6 +1230,7 @@ footer {
     background: none;
     border: none;
     text-align: left;
+    justify-content: flex-start;
     padding: 5px 10px;
     border-radius: 6px;
     font-size: 0.73em;
