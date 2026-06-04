@@ -3835,3 +3835,93 @@ footer {
   .sdk-text h2 { font-size: 1.5em; }
 }
 
+/* ───────────────────────── Mobile fixes ─────────────────────────
+   A. Hide decorative crosshair/diamond section background on mobile.
+   B. Fit HAX interaction-example demos to width + tap-to-expand modal. */
+
+/* Layout-transparent wrapper used to scale demos on mobile (no effect on desktop) */
+.hax-demo-fit { transform-origin: top left; }
+
+/* Expand-on-tap modal (only shown on mobile; toggled via JS) */
+.hax-demo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.hax-demo-modal.open { display: flex; }
+.hax-demo-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+.hax-demo-modal-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 8px;
+  padding-top: 48px;
+}
+.hax-demo-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-medium);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hax-demo-modal [class*="demo-wrapper"] {
+  padding: 6px;
+  border: none;
+  background: transparent;
+  cursor: default;
+  overflow: hidden;
+}
+.hax-demo-modal [class*="callout"] { display: none; }
+/* Safety: never show the mobile modal on desktop */
+@media (min-width: 769px) {
+  .hax-demo-modal { display: none !important; }
+}
+
+@media (max-width: 768px) {
+  /* A. Crosshair/diamond decorative background overflows on mobile — hide it */
+  .initiative-card,
+  .initiative-card.reversed { background-image: none; }
+
+  /* B. Interaction-example demos: compact padding, fit-to-width, tap to expand */
+  /* Let the content column shrink below the demos' intrinsic width so the page
+     doesn't gain horizontal overflow (grid/flex min-width:auto otherwise expands it). */
+  .patterns-layout { grid-template-columns: minmax(0, 1fr); }
+  .patterns-content { min-width: 0; }
+  .patterns-section [class*="demo-wrapper"] {
+    padding: 16px;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+  .patterns-section .scope-demo-wrapper { padding-left: 16px; }
+  /* Absolute annotation callouts can't align with the shrunk inline demo */
+  .patterns-section [class*="callout"] { display: none; }
+}
+

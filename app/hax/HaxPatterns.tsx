@@ -1851,6 +1851,152 @@ export default function HaxPatterns() {
       })
     })
 
+    // ── Mobile: fit interaction-example demos to width + tap-to-expand modal ──
+    const mql = window.matchMedia('(max-width: 768px)')
+    const demoWraps = Array.from(
+      root.querySelectorAll('[class*="demo-wrapper"]')
+    ) as HTMLElement[]
+
+    // Wrap each demo's children in a layout-transparent node we can scale.
+    demoWraps.forEach((wrap) => {
+      const first = wrap.firstElementChild as HTMLElement | null
+      if (first && first.classList.contains('hax-demo-fit')) return
+      const fit = document.createElement('div')
+      fit.className = 'hax-demo-fit'
+      while (wrap.firstChild) fit.appendChild(wrap.firstChild)
+      wrap.appendChild(fit)
+    })
+
+    // Scale a .hax-demo-fit so its content fits its wrapper's content box.
+    // Demos clip their own overflow (overflow:hidden), so the true content width
+    // is found by briefly revealing overflow, then we impose that width and scale
+    // the whole thing down — the entire demo stays visible, never cropped.
+    const applyFit = (fit: HTMLElement) => {
+      fit.style.transform = ''
+      fit.style.marginBottom = ''
+      fit.style.width = ''
+      const container = fit.parentElement
+      if (!container) return
+      const cs = getComputedStyle(container)
+      const padL = parseFloat(cs.paddingLeft) || 0
+      const padR = parseFloat(cs.paddingRight) || 0
+      const avail = container.clientWidth - padL - padR
+      if (avail <= 0) return
+      // Measure natural width with all inner overflow revealed.
+      const nodes = [fit, ...Array.from(fit.querySelectorAll('*'))] as HTMLElement[]
+      const prev = nodes.map((n) => n.style.overflow)
+      nodes.forEach((n) => {
+        n.style.overflow = 'visible'
+      })
+      const natural = fit.scrollWidth
+      nodes.forEach((n, i) => {
+        n.style.overflow = prev[i]
+      })
+      if (!natural || natural <= avail + 1) return
+      // Lay the demo out at its natural width, then scale to fit.
+      fit.style.width = `${natural}px`
+      const scale = avail / natural
+      const h = fit.offsetHeight
+      fit.style.transformOrigin = 'top left'
+      fit.style.transform = `scale(${scale})`
+      fit.style.marginBottom = `${-h * (1 - scale)}px`
+    }
+
+    const fitInline = () => {
+      demoWraps.forEach((wrap) => {
+        const fit = wrap.querySelector(':scope > .hax-demo-fit') as HTMLElement | null
+        if (!fit) return
+        if (mql.matches) {
+          applyFit(fit)
+        } else {
+          fit.style.transform = ''
+          fit.style.marginBottom = ''
+        }
+      })
+    }
+
+    // Build the expand modal once.
+    const modal = document.createElement('div')
+    modal.className = 'hax-demo-modal'
+    modal.setAttribute('role', 'dialog')
+    modal.setAttribute('aria-modal', 'true')
+    modal.setAttribute('aria-label', 'Expanded interaction example')
+    modal.innerHTML =
+      '<div class="hax-demo-modal-backdrop"></div>' +
+      '<div class="hax-demo-modal-content">' +
+      '<button type="button" class="hax-demo-modal-close" aria-label="Close expanded demo">\u00d7</button>' +
+      '<div class="hax-demo-modal-body"></div>' +
+      '</div>'
+    document.body.appendChild(modal)
+    const modalBody = modal.querySelector('.hax-demo-modal-body') as HTMLElement
+    const modalClose = modal.querySelector('.hax-demo-modal-close') as HTMLElement
+    const modalBackdrop = modal.querySelector('.hax-demo-modal-backdrop') as HTMLElement
+
+    const closeModal = () => {
+      if (!modal.classList.contains('open')) return
+      modal.classList.remove('open')
+      modalBody.innerHTML = ''
+      document.documentElement.style.overflow = ''
+    }
+    const openModal = (wrap: HTMLElement) => {
+      modalBody.innerHTML = ''
+      const clone = wrap.cloneNode(true) as HTMLElement
+      const cloneFit = clone.querySelector('.hax-demo-fit') as HTMLElement | null
+      if (cloneFit) {
+        cloneFit.style.transform = ''
+        cloneFit.style.marginBottom = ''
+      }
+      modalBody.appendChild(clone)
+      modal.classList.add('open')
+      document.documentElement.style.overflow = 'hidden'
+      modalClose.focus()
+      requestAnimationFrame(() => {
+        if (cloneFit) applyFit(cloneFit)
+      })
+    }
+
+    demoWraps.forEach((wrap) => {
+      on(wrap, 'click', () => {
+        if (mql.matches) openModal(wrap)
+      })
+    })
+
+    modalClose.addEventListener('click', closeModal)
+    modalBackdrop.addEventListener('click', closeModal)
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal()
+    }
+    document.addEventListener('keydown', onKey)
+
+    let resizeT: ReturnType<typeof setTimeout>
+    const onResize = () => {
+      clearTimeout(resizeT)
+      resizeT = setTimeout(() => {
+        fitInline()
+        const openFit = modalBody.querySelector('.hax-demo-fit') as HTMLElement | null
+        if (modal.classList.contains('open') && openFit) applyFit(openFit)
+      }, 150)
+    }
+    window.addEventListener('resize', onResize)
+    const onMqlChange = () => {
+      if (!mql.matches) closeModal()
+      fitInline()
+    }
+    mql.addEventListener('change', onMqlChange)
+
+    requestAnimationFrame(fitInline)
+    const fitTimer = setTimeout(fitInline, 350)
+
+    cleanups.push(() => {
+      clearTimeout(resizeT)
+      clearTimeout(fitTimer)
+      window.removeEventListener('resize', onResize)
+      document.removeEventListener('keydown', onKey)
+      mql.removeEventListener('change', onMqlChange)
+      modal.remove()
+      document.documentElement.style.overflow = ''
+    })
+
     return () => cleanups.forEach((fn) => fn())
   }, [])
 
