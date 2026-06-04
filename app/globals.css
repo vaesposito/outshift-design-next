@@ -933,8 +933,10 @@ footer {
   .menu-toggle { display: block; }
   /* Breathing room so the brand logo isn't flush with the header's bottom border */
   header { padding: 14px 0; }
-  /* Hide the decorative hero scroll-down chevron on mobile */
-  .hero-scroll-wrap { display: none; }
+  /* Hide the decorative hero scroll-down chevron on mobile (homepage wrapper +
+     the bare .hero-scroll-arrow used on /hax, research, guiding-principles, etc.) */
+  .hero-scroll-wrap,
+  .hero-scroll-arrow { display: none; }
   header nav {
     position: fixed;
     top: 0;
