@@ -1736,6 +1736,9 @@ export default function HaxPatterns() {
       el.addEventListener(ev, fn)
       cleanups.push(() => el.removeEventListener(ev, fn))
     }
+    // Forward hook: re-fit mobile demos after a panel becomes visible. Assigned
+    // once the mobile fit logic below is set up; safe no-op until then.
+    let refitDemos: () => void = () => {}
 
     // Principle filter buttons -> switch active panel + subnav
     root.querySelectorAll('.pattern-filter').forEach((btn) => {
@@ -1752,6 +1755,10 @@ export default function HaxPatterns() {
         root.querySelectorAll('.pattern-subnav').forEach((nav) => nav.classList.remove('is-open'))
         const activeSubnav = root.querySelector('.pattern-subnav[data-subnav="' + target + '"]')
         if (activeSubnav) activeSubnav.classList.add('is-open')
+        // The newly revealed panel's demos were display:none (measured 0) until
+        // now. Re-fit them once layout has settled.
+        requestAnimationFrame(() => refitDemos())
+        setTimeout(() => refitDemos(), 120)
       })
     })
 
@@ -1882,17 +1889,34 @@ export default function HaxPatterns() {
       const padR = parseFloat(cs.paddingRight) || 0
       const avail = container.clientWidth - padL - padR
       if (avail <= 0) return
-      // Measure natural width with all inner overflow revealed.
+      // Find the demo's true natural ("design") width. Many demos use fluid CSS
+      // grids (fr columns) that always stretch to fill their container, so a single
+      // scrollWidth read under-reports the real content width — the grid just
+      // compresses/clips columns to fit instead of reporting overflow. Iterate:
+      // lay the demo out at the current width, measure how far the content actually
+      // overflows, expand to that width, and repeat until it stops growing. Reveal
+      // inner overflow:hidden first so clipping can't hide the true content width.
+      // This converges in 1-2 steps and works for both fluid grids and fixed-width
+      // demos.
       const nodes = [fit, ...Array.from(fit.querySelectorAll('*'))] as HTMLElement[]
       const prev = nodes.map((n) => n.style.overflow)
       nodes.forEach((n) => {
         n.style.overflow = 'visible'
       })
-      const natural = fit.scrollWidth
+      let natural = avail
+      for (let i = 0; i < 6; i++) {
+        fit.style.width = `${natural}px`
+        const sw = fit.scrollWidth
+        if (sw <= natural + 1) break
+        natural = sw
+      }
       nodes.forEach((n, i) => {
         n.style.overflow = prev[i]
       })
-      if (!natural || natural <= avail + 1) return
+      if (natural <= avail + 1) {
+        fit.style.width = ''
+        return
+      }
       // Lay the demo out at its natural width, then scale to fit.
       fit.style.width = `${natural}px`
       const scale = avail / natural
@@ -1911,9 +1935,11 @@ export default function HaxPatterns() {
         } else {
           fit.style.transform = ''
           fit.style.marginBottom = ''
+          fit.style.width = ''
         }
       })
     }
+    refitDemos = fitInline
 
     // Build the expand modal once.
     const modal = document.createElement('div')
@@ -1945,14 +1971,27 @@ export default function HaxPatterns() {
       if (cloneFit) {
         cloneFit.style.transform = ''
         cloneFit.style.marginBottom = ''
+        cloneFit.style.width = ''
       }
       modalBody.appendChild(clone)
       modal.classList.add('open')
       document.documentElement.style.overflow = 'hidden'
       modalClose.focus()
-      requestAnimationFrame(() => {
-        if (cloneFit) applyFit(cloneFit)
-      })
+      // The modal starts display:none, so right after opening its content box can
+      // still measure 0 width — fitting then makes applyFit bail with no scaling.
+      // Wait (across frames) until the container has a real width, then fit.
+      if (cloneFit) {
+        let tries = 0
+        const tryFit = () => {
+          const c = cloneFit.parentElement
+          if (c && c.clientWidth > 0) {
+            applyFit(cloneFit)
+          } else if (tries++ < 30) {
+            requestAnimationFrame(tryFit)
+          }
+        }
+        requestAnimationFrame(tryFit)
+      }
     }
 
     demoWraps.forEach((wrap) => {
@@ -1984,6 +2023,37 @@ export default function HaxPatterns() {
     }
     mql.addEventListener('change', onMqlChange)
 
+    // Most demos live in pattern panels that start as display:none, so the initial
+    // fit measures width 0 and is skipped. When a panel becomes visible (tab
+    // switch), its wrappers go from 0 -> real width: re-fit them then. Comparing
+    // width (not height) avoids a feedback loop, since applyFit only changes height.
+    const lastWidth = new WeakMap<HTMLElement, number>()
+    let ro: ResizeObserver | null = null
+    if (typeof ResizeObserver !== 'undefined') {
+      ro = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          const wrap = entry.target as HTMLElement
+          const w = Math.round(entry.contentRect.width)
+          if (w === 0 || lastWidth.get(wrap) === w) continue
+          lastWidth.set(wrap, w)
+          const fit = wrap.querySelector(':scope > .hax-demo-fit') as HTMLElement | null
+          if (!fit) continue
+          // Defer to the next frame: when a panel flips display:none -> block the
+          // grid/fonts need a beat to settle before the natural width is stable.
+          requestAnimationFrame(() => {
+            if (mql.matches) {
+              applyFit(fit)
+            } else {
+              fit.style.transform = ''
+              fit.style.marginBottom = ''
+              fit.style.width = ''
+            }
+          })
+        }
+      })
+      demoWraps.forEach((wrap) => ro!.observe(wrap))
+    }
+
     requestAnimationFrame(fitInline)
     const fitTimer = setTimeout(fitInline, 350)
 
@@ -1993,6 +2063,7 @@ export default function HaxPatterns() {
       window.removeEventListener('resize', onResize)
       document.removeEventListener('keydown', onKey)
       mql.removeEventListener('change', onMqlChange)
+      if (ro) ro.disconnect()
       modal.remove()
       document.documentElement.style.overflow = ''
     })
