@@ -23,15 +23,25 @@ export default function PipelineStepper() {
     })
     if (!targets.length) return
 
+    const nav = links[0].closest('.pipeline-stepper') as HTMLElement | null
+
     function setActive(id: string) {
       links.forEach((a) => a.classList.remove('is-active'))
       const active = idToLink[id]
       if (active) {
         active.classList.add('is-active')
-        try {
-          active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
-        } catch {
-          /* noop */
+        // Only keep the active nav item in view when the stepper is the
+        // sticky desktop sidebar. On mobile it becomes a static, full-width
+        // pill bar at the top of the section — scrolling it into view there
+        // would yank the page back up and cancel the scroll-to-step, making
+        // the pills appear non-functional.
+        const isSticky = nav ? getComputedStyle(nav).position === 'sticky' : true
+        if (isSticky) {
+          try {
+            active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+          } catch {
+            /* noop */
+          }
         }
       }
     }
