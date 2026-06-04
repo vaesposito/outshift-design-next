@@ -101,7 +101,16 @@ html {
   scroll-behavior: smooth;
 }
 body {
+  /* Use `clip` rather than `hidden` to suppress horizontal overflow.
+     `overflow-x: hidden` forces the computed `overflow-y` to `auto`, which
+     turns <body> into a scroll container and changes overflow propagation to
+     the viewport. On mobile / Chrome DevTools device emulation this can break
+     manual scrolling, position: sticky, and scrollIntoView (the document and
+     <body> end up as competing scrollers). `clip` prevents the horizontal
+     scrollbar without establishing a scroll container. `hidden` is kept first
+     as a fallback for browsers that predate `overflow: clip`. */
   overflow-x: hidden;
+  overflow-x: clip;
   margin: 0;
   padding: 0;
   width: 100%;

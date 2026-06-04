@@ -59,6 +59,25 @@ export default function PipelineStepper() {
       targets.forEach((t) => observer!.observe(t))
     }
 
+    // Offset so the target sits below any header and matches the CSS
+    // scroll-margin-top on .pipeline-step.
+    const HEADER_OFFSET = 96
+
+    function scrollToTarget(el: HTMLElement) {
+      // Compute the absolute document position explicitly and scroll the
+      // window. This is deterministic regardless of which element the UA would
+      // pick as the scroll container for scrollIntoView (which has historically
+      // been ambiguous on mobile when <body> gains an overflow value).
+      const top =
+        el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET
+      const y = Math.max(0, Math.round(top))
+      try {
+        window.scrollTo({ top: y, behavior: 'smooth' })
+      } catch {
+        window.scrollTo(0, y)
+      }
+    }
+
     const clickHandlers: Array<[HTMLAnchorElement, (e: Event) => void]> = []
     links.forEach((link) => {
       const handler = (e: Event) => {
@@ -66,7 +85,7 @@ export default function PipelineStepper() {
         const el = document.getElementById(id)
         if (!el) return
         e.preventDefault()
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        scrollToTarget(el)
         history.replaceState(null, '', '#' + id)
         setActive(id)
       }
