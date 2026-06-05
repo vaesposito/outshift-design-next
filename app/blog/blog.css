@@ -174,7 +174,10 @@ a.blog-card-item {
 .blog-card-tag--more {
     position: relative;
     cursor: default;
-    color: var(--color-text-subtle);
+    /* Match the regular tag chips' text color for legible contrast (was the
+       faint --color-text-subtle, which was barely readable on the chip bg). */
+    color: var(--color-text);
+    font-weight: 600;
 }
 .blog-card-tag-tooltip {
     position: absolute;
