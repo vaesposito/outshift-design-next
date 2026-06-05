@@ -137,15 +137,10 @@ export default function HomePage() {
             <p>Insights, learnings, and stories from our design team.</p>
           </div>
           <div className="blog-cards">
-            <a
-              href={asset('/files/ai-ethics-and-design.pdf')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="blog-card"
-            >
+            <Link href="/blog/button-is-no-longer-the-point" className="blog-card">
               <div>
-                <h4>The Strategic Role of Design in Shaping Ethical AI Systems</h4>
-                <p className="blog-desc">How interface design becomes the primary control layer for responsible human–AI interaction — and what that means for designers building the next generation of AI products.</p>
+                <h4>The Button Is No Longer the Point</h4>
+                <p className="blog-desc">As AI systems begin to reason, adapt, and act, design shifts from perfecting interfaces to shaping behavior and the human–AI relationship — putting HAX principles like Control, Clarity, Recovery, Collaboration, and Traceability at the center of the craft.</p>
               </div>
               <div>
                 <div className="blog-meta">
@@ -155,15 +150,15 @@ export default function HomePage() {
                   </span>
                   <span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                    May 2026
+                    June 2026
                   </span>
                 </div>
                 <div className="blog-footer">
-                  <span>Whitepaper</span>
+                  <span>6 min read</span>
                   <span className="read-more">Read more</span>
                 </div>
               </div>
-            </a>
+            </Link>
 
             <Link href="/blog/making-room-for-agents" className="blog-card">
               <div>

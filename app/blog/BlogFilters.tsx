@@ -32,6 +32,19 @@ const FILTERS: { tag: string; label: string }[] = [
 
 const CARDS: BlogCard[] = [
   {
+    href: '/blog/button-is-no-longer-the-point',
+    external: false,
+    image: asset('/images/blog/button-is-no-longer-the-point/hero.svg'),
+    imageAlt: 'The Button Is No Longer the Point',
+    tags: ['design', 'ai', 'product-design', 'agents'],
+    tagLabels: ['Design', 'AI', 'Product Design', 'Agents'],
+    title: 'The Button Is No Longer the Point',
+    desc: 'As AI systems begin to reason, adapt, and act, design shifts from perfecting interfaces to shaping behavior and the human–AI relationship — putting HAX principles like Control, Clarity, Recovery, Collaboration, and Traceability at the center of the craft.',
+    author: 'Krystelle Gonzalez Papaux',
+    date: 'June 2026',
+    readLabel: '6 min read',
+  },
+  {
     href: 'https://outshift-headless-cms-s3.s3.us-east-2.amazonaws.com/Navigating_The_Multi-Agent_Future.pdf',
     external: true,
     image: asset('/images/blog/navigating-multi-agent-future.png'),
@@ -44,19 +57,24 @@ const CARDS: BlogCard[] = [
     date: 'April 2026',
     readLabel: 'Whitepaper',
   },
-  {
-    href: asset('/files/ai-ethics-and-design.pdf'),
-    external: true,
-    image: asset('/images/blog/ai-ethics-cover.png'),
-    imageAlt: 'AI Ethics and Design cover',
-    tags: ['research', 'ai', 'ai-ethics'],
-    tagLabels: ['Research', 'AI Ethics', 'Product Design'],
-    title: 'The Strategic Role of Design in Shaping Ethical AI Systems',
-    desc: 'As AI systems evolve toward agentic and autonomous architectures, ethics can no longer be governed purely through policy and model training. This report explores how interface design becomes the primary control layer for responsible human–AI interaction — and what that means for designers building the next generation of AI products.',
-    author: 'Krystelle Gonzalez Papaux',
-    date: 'May 2026',
-    readLabel: 'Whitepaper',
-  },
+  // ──────────────────────────────────────────────────────────────────────
+  // TEMPORARILY UNLISTED (do not delete — restore by un-commenting this entry)
+  // "The Strategic Role of Design in Shaping Ethical AI Systems"
+  // Hidden from /blog + homepage on request; article/PDF assets left in place.
+  // {
+  //   href: asset('/files/ai-ethics-and-design.pdf'),
+  //   external: true,
+  //   image: asset('/images/blog/ai-ethics-cover.png'),
+  //   imageAlt: 'AI Ethics and Design cover',
+  //   tags: ['research', 'ai', 'ai-ethics'],
+  //   tagLabels: ['Research', 'AI Ethics', 'Product Design'],
+  //   title: 'The Strategic Role of Design in Shaping Ethical AI Systems',
+  //   desc: 'As AI systems evolve toward agentic and autonomous architectures, ethics can no longer be governed purely through policy and model training. This report explores how interface design becomes the primary control layer for responsible human–AI interaction — and what that means for designers building the next generation of AI products.',
+  //   author: 'Krystelle Gonzalez Papaux',
+  //   date: 'May 2026',
+  //   readLabel: 'Whitepaper',
+  // },
+  // ──────────────────────────────────────────────────────────────────────
   {
     href: '/blog/making-room-for-agents',
     external: false,
