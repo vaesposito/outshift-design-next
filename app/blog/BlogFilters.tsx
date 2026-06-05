@@ -34,7 +34,7 @@ const CARDS: BlogCard[] = [
   {
     href: '/blog/button-is-no-longer-the-point',
     external: false,
-    image: asset('/images/blog/button-is-no-longer-the-point/hero.svg'),
+    image: asset('/images/blog/button-is-no-longer-the-point/hero.png'),
     imageAlt: 'The Button Is No Longer the Point',
     tags: ['design', 'ai', 'product-design', 'agents'],
     tagLabels: ['Design', 'AI', 'Product Design', 'Agents'],

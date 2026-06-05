@@ -7,7 +7,7 @@ import ReadingProgress from '@/components/ReadingProgress'
 const TITLE = 'The Button Is No Longer the Point'
 const DESCRIPTION =
   'As AI systems begin to reason, adapt, and act, design shifts from perfecting interfaces to shaping behavior and the human–AI relationship — putting HAX principles like Control, Clarity, Recovery, Collaboration, and Traceability at the center of the craft.'
-const HERO = 'https://vaesposito.github.io/outshift-design/images/blog/button-is-no-longer-the-point/hero.svg'
+const HERO = 'https://vaesposito.github.io/outshift-design/images/blog/button-is-no-longer-the-point/hero.png'
 
 export const metadata: Metadata = {
   title: `${TITLE} — Outshift Design`,
@@ -74,7 +74,7 @@ export default function ButtonIsNoLongerThePointPage() {
 
           <div className="article-hero">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={asset('/images/blog/button-is-no-longer-the-point/hero.svg')} alt="The Button Is No Longer the Point" />
+            <img src={asset('/images/blog/button-is-no-longer-the-point/hero.png')} alt="The Button Is No Longer the Point" />
           </div>
 
           <div className="author-row">
