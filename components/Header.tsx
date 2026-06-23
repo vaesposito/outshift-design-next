@@ -42,11 +42,10 @@ export default function Header() {
         <div className="logo">
           <Link href="/" onClick={closeMenu}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={asset('/images/outshift_logo.svg')} alt="Outshift" className="logo-light" style={{ height: 50 }} />
+            <img src={asset('/images/logo-outshift-design.svg')} alt="outshift design by CISCO" className="logo-light" style={{ height: 50 }} />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={asset('/images/outshift_logo-white.svg')} alt="Outshift" className="logo-dark" style={{ height: 50 }} />
+            <img src={asset('/images/logo-outshift-design-dark.svg')} alt="outshift design by CISCO" className="logo-dark" style={{ height: 50 }} />
           </Link>
-          <div className="design">design</div>
         </div>
 
         <button
