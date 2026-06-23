@@ -190,14 +190,6 @@ export default function AugmentedDesignerPage() {
 
             <hr />
 
-            <h2>The Augmented Designer</h2>
-
-            <p>AI tools are appearing in all areas and contexts. From content generation — which still requires competent HITL judgment — to image generation and the expansion of design systems, the applications in our field are vast. A solid design system can be used as a base for any new UI project if fed into a code assistant. New themes can be generated, and beautiful, consistent designs can be produced for future projects.</p>
-
-            <p>We are using fewer traditional design tools, and we look forward to the day the &quot;design-to-code&quot; issue is completely solved. The technology is so fresh and evolving that finding a durable process that isn&apos;t linked to version control isn&apos;t a possibility yet. In the meantime, watching, testing, playing, and participating in hackathons helps us test these possibilities in safe spaces.</p>
-
-            <hr />
-
             <h2>Reflections on the Future of Design</h2>
 
             <p>As AI capabilities continue to expand, every role is being reshaped, and we must learn to discern what to adopt and what to leave behind. From a product design perspective, the potential is immense: the design bottlenecks caused by time-consuming artifact production are finally becoming a thing of the past. We are reducing the burden of tedious state documentation and design system maintenance, allowing design reflections to be explored and tested with unprecedented speed.</p>
