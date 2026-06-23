@@ -147,7 +147,7 @@ export default function SecurityPrivacyPage() {
             </div>
           </div>
 
-          {/* Use Cases */}
+          {/* TEMPORARILY HIDDEN — USE CASES
           <div className="use-cases">
             <p className="use-cases-label">Use Cases</p>
             <div className="blog-cards">
@@ -186,6 +186,7 @@ export default function SecurityPrivacyPage() {
               </div>
             </div>
           </div>
+          */}
         </div>
       </div>
     </>

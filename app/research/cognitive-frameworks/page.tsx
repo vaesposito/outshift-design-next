@@ -107,6 +107,7 @@ export default function CognitiveFrameworksPage() {
                   </div>
                 </div>
               </div>
+              {/* TEMPORARILY HIDDEN — USE CASES
               <p className="use-cases-label">USE CASES</p>
               <div className="use-cases-grid">
                 <a href="#" className="use-case-card">
@@ -143,6 +144,7 @@ export default function CognitiveFrameworksPage() {
                   </div>
                 </a>
               </div>
+              */}
             </div>
 
             <div className="pipeline-step" id="cf-step-2">
@@ -215,6 +217,7 @@ export default function CognitiveFrameworksPage() {
                 <p className="framework-why-title">Why this matters</p>
                 <p>Cognition extends beyond the brain into physical gestures, spatial arrangements, and temporal rhythms of interaction. When designing agents that interact with users in the real world, we must consider how these embodied and environmental dynamics shape meaning, attention, and action—ensuring that agents respond not just to words, but to movement, rhythm, and context as part of the cognitive process itself.</p>
               </div>
+              {/* TEMPORARILY HIDDEN — USE CASES
               <p className="use-cases-label">Use cases</p>
               <div className="use-cases-grid">
                 <a href="#" className="use-case-card">
@@ -232,6 +235,7 @@ export default function CognitiveFrameworksPage() {
                   </div>
                 </a>
               </div>
+              */}
             </div>
           </div>
         </div>
